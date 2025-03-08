@@ -13,8 +13,8 @@ This guide explains how to integrate the `sitecore-search-with-google-map` packa
 
 We have two separate repositories:
 
-1. **NPM Package Repository** - Contains the actual package hosted on NPM.
-2. **Demo Repository** - A Next.js site showcasing how to integrate and use the package.
+1. **NPM Package Repository** - Contains the actual package hosted on NPM. link: https://www.npmjs.com/package/sitecore-search-with-google-map
+2. **Demo Repository** - A Next.js site showcasing how to integrate and use the package. link: https://integration-with-package.vercel.app/
 
 ## Features
 

@@ -2,9 +2,9 @@
 
 This guide explains how to integrate the `sitecore-search-with-google-map` package into your Next.js application. This package simplifies the process of combining Sitecore Search with Google Maps for an enhanced location-based search experience.
 
-**Vercel** : [https://integration-with-package-jvfarjqg3.vercel.app/about](https://integration-with-package-jvfarjqg3.vercel.app/about)
-
-[https://integration-with-package-jvfarjqg3.vercel.app](https://integration-with-package-jvfarjqg3.vercel.app/)
+**Vercel** :
+https://integration-with-package.vercel.app/
+https://integration-with-package.vercel.app/about
 
 ## Installation
 
