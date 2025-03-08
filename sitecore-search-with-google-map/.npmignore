@@ -1,0 +1,14 @@
+node_modules
+.next
+.git
+.vscode
+.env*
+*.log
+coverage
+src/
+public/
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+``
