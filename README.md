@@ -5,181 +5,158 @@
 - MUST READ: **[Submission requirements](SUBMISSION_REQUIREMENTS.md)**
 - [Entry form template](ENTRYFORM.md)
 
-# Sitecore Search with Google Maps Integration
+# Hackathon Submission Entry form
 
-This guide explains how to integrate the `sitecore-search-with-google-map` package into your Next.js application. This package simplifies the process of combining Sitecore Search with Google Maps for an enhanced location-based search experience.
+> __Important__
+>
+> Copy and paste the content of this file into README.md or face automatic __disqualification__
+> All headlines and subheadlines shall be retained if not noted otherwise.
+> Fill in text in each section as instructed and then delete the existing text, including this blockquote.
 
-## Overview
+You can find a very good reference to Github flavoured markdown reference in [this cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). If you want something a bit more WYSIWYG for editing then could use [StackEdit](https://stackedit.io/app) which provides a more user friendly interface for generating the Markdown code. Those of you who are [VS Code fans](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview) can edit/preview directly in that interface too.
 
-We have two separate repositories:
+## Team name
 
-1. **NPM Package Repository** - Contains the actual package hosted on NPM. link: https://www.npmjs.com/package/sitecore-search-with-google-map
-2. **Demo Repository** - A Next.js site showcasing how to integrate and use the package. link: https://integration-with-package.vercel.app/
+⟹ CoreShift
 
-## Features
+## Category
 
-* Easy integration of Google Maps with Sitecore Search in Next.js
-* Location-based search using latitude, longitude, and customizable search radius
-* Multiple layout options for flexible UI design
-* Minimal configuration required for rapid development
+⟹ Integration
 
-## Installation
+## Description
 
-Install the package using npm:
+⟹ Write a clear description of your hackathon entry.
 
-```sh
+- Module Purpose
+
+  - The `sitecore-search-with-google-map` package simplifies the integration of Sitecore Search with Google Maps in Next.js applications. It enables users to perform location-based searches effortlessly by leveraging Google Maps API for geolocation data and Sitecore Search for content discovery.
+- What problem was solved (if any)
+
+  - Before this module, integrating Sitecore Search with Google Maps required multiple API calls, complex configurations, and manual data handling. This package eliminates those complexities by providing a streamlined, ready-to-use component that:
+
+  * Reduces development effort by offering an easy-to-use search interface
+  * Provides customizable search layouts
+  * Automates the fetching and filtering of location-based search results
+
+_You can alternately paste a [link here](#docs) to a document within this repo containing the description._
+
+## Video link
+
+⟹ Provide a video highlighing your Hackathon module submission and provide a link to the video. You can use any video hosting, file share or even upload the video to this repository. _Just remember to update the link below_
+
+⟹ [Hackathon_2025_Demo](https://horizontal-my.sharepoint.com/:v:/p/abarve/ER8SZgX2vCtOkfaP6Mi86wQBEXD2xAs2sqBq7jh5fAvqXA?e=c5iGCy)
+
+## Pre-requisites and Dependencies
+
+⟹ Does your module rely on other Sitecore modules or frameworks?
+
+- Required Dependencies
+  - **Next.js** (Recommended version: 13 or later)
+  - **Sitecore Search API**
+  - **Google Maps API** (Places API & Geocoding API enabled)
+
+###   Sitecore Dependencies
+
+* A valid Sitecore Search account
+* Configured search source and RFK ID in Sitecore Search
+
+_Remove this subsection if your entry does not have any prerequisites other than Sitecore_
+
+## Installation instructions
+
+### 1. Install the Package
+
+Run the following command to install the package via npm:
+
+```
 npm install sitecore-search-with-google-map
 ```
 
-## Tailwind CSS Configuration
+### 2. Configure Tailwind CSS (If Applicable)
 
-To ensure the package's styles are applied correctly, update your `tailwind.config.ts` file by adding the following content paths:
+To ensure proper styling, update your `<span>tailwind.config.ts</span>` file by adding the package’s content paths:
 
-```ts
+```
 import type { Config } from "tailwindcss";
 const config: Config = {
-    content: [
-        "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-        "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-        "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-        "./node_modules/sitecore-search-with-google-map/dist/**/*.{js,ts,jsx,tsx}",
-        "./node_modules/sitecore-search-with-google-map/dist/*.{js,ts,jsx,tsx}",
-    ],
-    theme: {
-        extend: {
-            colors: {
-                background: "var(--background)",
-                foreground: "var(--foreground)",
-            },
-        },
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./node_modules/sitecore-search-with-google-map/dist/**/*.{js,ts,jsx,tsx}",
+    "./node_modules/sitecore-search-with-google-map/dist/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        background: "var(--background)",
+        foreground: "var(--foreground)",
+      },
     },
-    plugins: [],
+  },
+  plugins: [],
 };
 export default config;
 ```
 
-## Usage
+### 3. Add the Component to Your Next.js Application
 
-### Live Demo
+Import the `<span>Search</span>` component and use it within your app:
 
-You can check the working implementation here:
-
-* [Demo About Page](https://integration-with-package-jvfarjqg3.vercel.app/about)
-* [Demo Home Page](https://integration-with-package-jvfarjqg3.vercel.app/)
-
-### Integrating the Search Component
-
-Import the `Search` component and integrate it into your Next.js application:
-
-```tsx
+```
 import { Search } from "sitecore-search-with-google-map";
 
-const customArticleRenderer = (article: any) => (
-    <div className="bg-gradient-to-r from-blue-200 via-purple-300 to-pink-200 p-6 rounded-2xl shadow-lg text-gray-800">
-        <div className="flex items-center gap-4">
-            <h2 className="text-2xl font-semibold">{article.title}</h2>
-        </div>
-        <span className="inline-block bg-purple-400 text-white text-sm font-medium px-3 mt-1 py-1 rounded-full shadow-sm">
-            {article?.category?.[0]}
-        </span>
-        <p className="mt-3 text-base text-gray-700">{article.description}</p>
-        <a
-            href={article?.url}
-            className="mt-4 inline-block bg-purple-600 text-white font-medium py-2 px-6 rounded-xl transition-transform transform hover:scale-105 hover:bg-blue-600"
-        >
-            Learn More
-        </a>
-    </div>
-);
-
-return (
-    <div className="about-search">
-        <Search
-            title="Sitecore Search with Google Maps Integration"
-            discoverDomainId={discoverDomainId || ""}
-            env={env as Environment}
-            customerKey={customerKey || ""}
-            apiKey={searchApiKey || ""}
-            searchSource={searchSource || ""}
-            rfkId={rfkId || ""}
-            radiusInKM={50}
-            layout={"SearchWithParallelMapAndInputWithContentReverse"}
-            description="A custom Next.js package combining Sitecore Search with Google Maps for interactive, location-based search. Hosted on NPM and tested with a Next.js site on Vercel."
-            noResultFound="No result found"
-            inputPlaceholder="Please search location here; it will fetch places from Google Maps and render data from Sitecore Search."
-            customArticleRenderer={customArticleRenderer}
-            mapIcon={imgUrl}
-        />
-    </div>
-);
+<Search
+  title="Sitecore Search with Google Maps Integration"
+  discoverDomainId={discoverDomainId || ""}
+  env={env as Environment}
+  customerKey={customerKey || ""}
+  apiKey={searchApiKey || ""}
+  searchSource={searchSource || ""}
+  rfkId={rfkId || ""}
+  radiusInKM={20}
+  layout={"SearchWithInputOnTopWithParallelMapAndContent"}
+  description="A Next.js package integrating Sitecore Search with Google Maps for location-based searches."
+  noResultFound="No result found"
+  inputPlaceholder="Search for a location here..."
+  mapIcon={imgUrl}
+/>
 ```
 
-If you do not pass the `customArticleRenderer`, the default article renderer will be used.
+### 4. Set Up Google Maps API
 
-## How It Works
+Ensure you have a valid Google Maps API key with the following services enabled:
 
-1. Users search for a location using the input field.
-2. The Google Maps API fetches location suggestions.
-3. Upon selection, Google Maps API retrieves latitude and longitude.
-4. The Sitecore Search API is called with the geolocation data and search radius.
-5. Results are displayed based on proximity to the selected location.
+* **Places API**
+* **Geocoding API**
 
-## Example Query Configuration
+### 5. Configure Sitecore Search
 
-```ts
-const geoFilter = new FilterGeo("location", `${radiusInKM || 10}km`);
-query
-    .getRequest()
-    .setSearchFacetAll(true)
-    .setSources(searchSourceIds)
-    .setSearchFilter(geoFilter);
-```
+* Obtain your **API key**, **customer key**, **search source**, and **RFK ID** from your Sitecore Search account.
+* Ensure that the search source has location-based filtering enabled.
 
-## Props
+### Configuration
 
-| Prop                 | Type       | Required | Description                           |
-| -------------------- | ---------- | -------- | ------------------------------------- |
-| `title`            | `string` | Yes      | Component title                       |
-| `description`      | `string` | No       | Component description                 |
-| `inputPlaceholder` | `string` | No       | Placeholder for the input field       |
-| `mapIcon`          | `string` | No       | URL for the map icon                  |
-| `noResultFound`    | `string` | No       | Message when no results are found     |
-| `radiusInKM`       | `number` | No       | Radius for location-based search (km) |
-| `rfkId`            | `string` | Yes      | Sitecore Search RFK ID                |
-| `searchSource`     | `string` | Yes      | Sitecore Search source ID             |
-| `apiKey`           | `string` | Yes      | Sitecore Search API key               |
-| `customerKey`      | `string` | Yes      | Sitecore Search customer key          |
-| `env`              | `string` | Yes      | Sitecore Search environment           |
-| `discoverDomainId` | `string` | Yes      | Sitecore Search Discover Domain ID    |
-| `layout`           | `string` | No       | Layout variation                      |
+⟹ If there are any custom configuration that has to be set manually then remember to add all details here.
 
-## Available Layouts
+_Remove this subsection if your entry does not require any configuration that is not fully covered in the installation instructions already_
 
-```ts
-layout?:
-    | "SearchWithInputOnTopWithParallelMapAndContent"
-    | "SearchWithInputMapContentStack"
-    | "SearchWithInputOnTopWithParallelMapAndContentSmallMap"
-    | "SearchWithParallelMapAndInputWithContent"
-    | "SearchWithInputOnTopWithParallelMapAndContentReverse"
-    | "SearchWithInputOnTopWithParallelMapAndContentSmallMapReverse"
-    | "SearchWithParallelMapAndInputWithContentReverse"
-    | undefined;
-```
+## Usage instructions
 
-## Troubleshooting
+⟹ Provide documentation about your module, how do the users use your module, where are things located, what do the icons mean, are there any secret shortcuts etc.
 
-### Google Maps API Key Issues
+Include screenshots where necessary. You can add images to the `./images` folder and then link to them from your documentation:
 
-* Ensure the Google Maps API key has the proper permissions for Places API and Geocoding API.
-* Confirm billing is enabled for the Google Cloud project.
+![Hackathon Logo](docs/images/hackathon.png?raw=true "Hackathon Logo")
 
-### Sitecore Search API Key Issues
+You can embed images of different formats too:
 
-* Double-check the API key and customer key in your environment variables.
-* Ensure search source and RFK ID are correctly set up in Sitecore Search.
+![Deal With It](docs/images/deal-with-it.gif?raw=true "Deal With It")
 
-## NPM Package
+And you can embed external images too:
 
-For more details, refer to the official package:
-[https://www.npmjs.com/package/sitecore-search-with-google-map](https://www.npmjs.com/package/sitecore-search-with-google-map)
+![Random](https://thiscatdoesnotexist.com/)
+
+## Comments
+
+If you'd like to make additional comments that is important for your module entry.
