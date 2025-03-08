@@ -1,0 +1,54 @@
+{
+  "name": "sitecore-search-with-google-map",
+  "version": "11.11.99",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "react": "^18",
+    "react-dom": "^18",
+    "@sitecore-search/react": "^2.6.3",
+    "@sitecore-search/ui": "^2.6.3",
+    "formik": "^2.4.6",
+    "next": "14.2.18",
+    "@radix-ui/react-icons": "^1.3.2",
+    "@react-google-maps/api": "^2.19.3"
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "build:types": "tsc -p tsconfig.build.json"
+  },
+  "dependencies": {
+    "@radix-ui/react-icons": "^1.3.2",
+    "@react-google-maps/api": "^2.19.3",
+    "@sitecore-search/react": "^2.6.3",
+    "@sitecore-search/ui": "^2.6.3",
+    "formik": "^2.4.6",
+    "next": "14.2.18",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  }
+}

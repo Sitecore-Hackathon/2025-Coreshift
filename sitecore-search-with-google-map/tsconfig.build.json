@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationMap": true,
+    "skipLibCheck": true,
+    "noEmit": false,
+    "allowJs": false,
+    "jsx": "react-jsx" // Make sure JSX compiles to valid JS
+
+  },
+  "include": ["src/index.ts", "src/components/**/*"]
+}
